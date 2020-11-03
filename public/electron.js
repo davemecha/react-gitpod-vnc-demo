@@ -6,8 +6,8 @@ const isDev = require("electron-is-dev");
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 800,
+    height: 600,
     minWidth: 800,
     minHeight: 600,
     show: true,
@@ -17,7 +17,7 @@ function createWindow() {
       enableRemoteModule: true,
     },
   });
-  win.maximize();
+  // win.maximize();
 
   // and load the index.html of the app.
   // win.loadFile("index.html");
@@ -30,10 +30,17 @@ function createWindow() {
 
   // Open the DevTools.
   if (isDev) {
-    win.webContents.openDevTools();
-    // win.webContents.openDevTools({ mode: "detach" });
+    // win.webContents.openDevTools();
+    win.webContents.openDevTools({ mode: "detach" });
   }
 }
+
+app.commandLine.appendSwitch('media-cache-size', '8388608');
+// app.commandLine.appendSwitch('media-cache-size', '33554432');
+// app.commandLine.appendSwitch('max-decoded-image-size-mb', '1');
+// app.commandLine.appendSwitch('single-process');
+app.commandLine.appendSwitch('renderer-process-limit', '1');
+app.commandLine.appendSwitch('memory-pressure-off');
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
