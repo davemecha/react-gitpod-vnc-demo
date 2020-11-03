@@ -4,7 +4,7 @@ USER gitpod
 
 # install chrome runtime: libgbm-dev for electron
 RUN sudo apt-get -q update \
-  && sudo apt-get -y install libgbm-dev
+  && sudo apt-get -y install libgbm-dev libnss3-dev
 
 USER root
 
