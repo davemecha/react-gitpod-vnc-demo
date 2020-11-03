@@ -15,14 +15,16 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
-    },    
+    },
   });
+  win.maximize();
 
   // and load the index.html of the app.
   // win.loadFile("index.html");
   win.loadURL(
     isDev
-      ? "http://localhost:3000"
+      ? "https://medium.com/gitpod/developing-native-ui-applications-in-gitpod-15af2967c24e"
+      // ? "http://localhost:3000"
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
 
