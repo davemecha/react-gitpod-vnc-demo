@@ -37,6 +37,7 @@ function createWindow() {
 
 app.commandLine.appendSwitch('media-cache-size', '8388608');
 // app.commandLine.appendSwitch('media-cache-size', '33554432');
+app.commandLine.appendSwitch('disk-cache-size', '33554432');
 // app.commandLine.appendSwitch('max-decoded-image-size-mb', '1');
 // app.commandLine.appendSwitch('single-process');
 app.commandLine.appendSwitch('renderer-process-limit', '1');
