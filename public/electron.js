@@ -6,11 +6,16 @@ const isDev = require("electron-is-dev");
 function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1024,
+    height: 768,
+    minWidth: 800,
+    minHeight: 600,
+    show: true,
+    resizable: true,
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+      enableRemoteModule: true,
+    },    
   });
 
   // and load the index.html of the app.
@@ -23,7 +28,8 @@ function createWindow() {
 
   // Open the DevTools.
   if (isDev) {
-    win.webContents.openDevTools({ mode: "detach" });
+    win.webContents.openDevTools();
+    // win.webContents.openDevTools({ mode: "detach" });
   }
 }
 
