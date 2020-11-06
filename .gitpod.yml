@@ -4,7 +4,7 @@ ports:
   - port: 3000
 tasks:
   - init: yarn install
-    command: yarn electron-dev
+#    command: yarn electron-dev
 
 vscode:
   extensions:
