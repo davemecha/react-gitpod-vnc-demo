@@ -1,11 +1,5 @@
 image:
   file: .gitpod.Dockerfile
-ports:
-  - port: 3000
 tasks:
   - init: yarn install
-#    command: yarn electron-dev
-
-vscode:
-  extensions:
-    - VisualStudioExptTeam.vscodeintellicode@1.1.9:osawgVS7+7lo2813SXOJng==
+    command: yarn electron

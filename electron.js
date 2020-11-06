@@ -1,40 +1,6 @@
-const path = require("path");
-
 const { app, BrowserWindow } = require("electron");
-const isDev = require("electron-is-dev");
 
-function createWindow() {
-  // Create the browser window.
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    minWidth: 800,
-    minHeight: 600,
-    show: true,
-    resizable: true,
-    webPreferences: {
-      nodeIntegration: true,
-      enableRemoteModule: true,
-    },
-  });
-  // win.maximize();
-
-  // and load the index.html of the app.
-  // win.loadFile("index.html");
-  win.loadURL(
-    isDev
-      ? "https://medium.com/gitpod/developing-native-ui-applications-in-gitpod-15af2967c24e"
-      // ? "http://localhost:3000"
-      : `file://${path.join(__dirname, "../build/index.html")}`
-  );
-
-  // Open the DevTools.
-  if (isDev) {
-    // win.webContents.openDevTools();
-    win.webContents.openDevTools({ mode: "detach" });
-  }
-}
-
+// experiments for reduction of memory consumption
 app.commandLine.appendSwitch('media-cache-size', '8388608');
 // app.commandLine.appendSwitch('media-cache-size', '33554432');
 app.commandLine.appendSwitch('disk-cache-size', '33554432');
@@ -42,6 +8,18 @@ app.commandLine.appendSwitch('disk-cache-size', '33554432');
 // app.commandLine.appendSwitch('single-process');
 app.commandLine.appendSwitch('renderer-process-limit', '1');
 app.commandLine.appendSwitch('memory-pressure-off');
+
+
+function createWindow() {
+  // Create the browser window.
+  const win = new BrowserWindow({ width: 800, height: 600 });
+
+  // and load the index.html of the app.
+  win.loadURL("https://medium.com/gitpod/developing-native-ui-applications-in-gitpod-15af2967c24e");
+
+  // Open the DevTools.
+  win.webContents.openDevTools({ mode: "detach" });
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
