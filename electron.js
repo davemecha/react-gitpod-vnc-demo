@@ -1,13 +1,7 @@
 const { app, BrowserWindow } = require("electron");
 
-// experiments for reduction of memory consumption
-app.commandLine.appendSwitch('media-cache-size', '8388608');
-// app.commandLine.appendSwitch('media-cache-size', '33554432');
-app.commandLine.appendSwitch('disk-cache-size', '33554432');
-// app.commandLine.appendSwitch('max-decoded-image-size-mb', '1');
-// app.commandLine.appendSwitch('single-process');
-app.commandLine.appendSwitch('renderer-process-limit', '1');
-app.commandLine.appendSwitch('memory-pressure-off');
+// disable shared memory for chromium to fix gitpod / docker crash issue
+app.commandLine.appendSwitch('disable-dev-shm-usage');
 
 
 function createWindow() {
@@ -18,7 +12,8 @@ function createWindow() {
   win.loadURL("https://medium.com/gitpod/developing-native-ui-applications-in-gitpod-15af2967c24e");
 
   // Open the DevTools.
-  win.webContents.openDevTools({ mode: "detach" });
+  // win.webContents.openDevTools({ mode: "detach" });
+  win.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
